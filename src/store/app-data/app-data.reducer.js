@@ -1,4 +1,3 @@
-// import FONT_AWESOME_DB from "../../database/index-db.json";
 import { APP_DATA_ACTION_TYPES } from "./app-data.types";
 
 const INITIAL_STATE = {
@@ -16,7 +15,7 @@ export const appDataReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "UPDATE_DATA":
+    case APP_DATA_ACTION_TYPES.ADD_DATA:
       return {
         ...state,
         appData: payload,

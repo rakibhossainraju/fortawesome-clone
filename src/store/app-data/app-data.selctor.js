@@ -7,3 +7,5 @@ export const selectFontAwesomeCategories = ({ appData }) =>
 
 export const selectFontAwesomeSponsors = ({ appData }) =>
   appData.appData.sponsors;
+
+export const selectFilters = ({ appData }) => appData.filters;

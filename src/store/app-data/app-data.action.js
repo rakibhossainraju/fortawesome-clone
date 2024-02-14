@@ -1,6 +1,10 @@
 import createAction from "../../utils/reducer.utils";
 import { APP_DATA_ACTION_TYPES } from "./app-data.types";
 
+//Add Data
+export const addData = (data) =>
+  createAction(APP_DATA_ACTION_TYPES.ADD_DATA, data);
+
 //Search action
 export const searchByName = (query) =>
   createAction(APP_DATA_ACTION_TYPES.SEARCH_BY_NAME, query);
