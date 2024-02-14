@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "ceraroundpros";
+  src: url("/fonts/cera-round-pro/Fontspring-DEMO-ceraroundpro-light.otf");
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+  /*color: rgb( 97 109 138 );*/
+}

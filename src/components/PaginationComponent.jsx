@@ -1,9 +1,9 @@
 import { useState } from "react";
-import IconCardComponent from "./IconCardComponent";
+import { IconsComponent } from "./IconsComponent.jsx";
 
 const PaginationComponent = ({ fontAwesomeSvgs }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(94);
+  const postPerPage = 94;
   //Get current posts
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
@@ -18,7 +18,7 @@ const PaginationComponent = ({ fontAwesomeSvgs }) => {
   };
 
   function prevPage() {
-    if (currentPage != 1) setCurrentPage(currentPage - 1);
+    if (currentPage !== 1) setCurrentPage(currentPage - 1);
   }
   function nextPage() {
     if (currentPage !== pageNumbers[pageNumbers.length - 1])
@@ -27,12 +27,27 @@ const PaginationComponent = ({ fontAwesomeSvgs }) => {
 
   return (
     <>
+      <section className="mx-10 my-6 flex items-center justify-between">
+        <div className="max-w-[80%]">
+          <h3 className="text-2xl text-blue-1000">
+            <span className="font-normal ">{fontAwesomeSvgs.length} </span>
+            <span className="font-ceraroundpros font-bold">Icons</span>
+          </h3>
+        </div>
+        <div>
+          <h4
+            className={`text-lg text-slate-500 ${fontAwesomeSvgs.length <= postPerPage && "invisible"}`}
+          >
+            <span className="font-ceraroundpros ">Page </span> {currentPage}
+            <span className="font-ceraroundpros ">out of</span>{" "}
+            {pageNumbers[pageNumbers.length - 1]}
+          </h4>
+        </div>
+      </section>
       {fontAwesomeSvgs.length > postPerPage ? (
         <>
-          <h1 className="self-center text-center text-6xl text-emerald-400">
-            Page {currentPage} out of {pageNumbers[pageNumbers.length - 1]}{" "}
-          </h1>
-          <IconCardComponent fontAwesomeSvgs={currentPost} />
+          <IconsComponent fontAwesomeSvgs={currentPost} />
+          {/*Pagination Buttons*/}
           <nav>
             <ul className="mb-10">
               <div>
@@ -65,10 +80,10 @@ const PaginationComponent = ({ fontAwesomeSvgs }) => {
                 </button>
               </div>
             </ul>
-          </nav>{" "}
+          </nav>
         </>
       ) : (
-        <IconCardComponent fontAwesomeSvgs={fontAwesomeSvgs} />
+        <IconsComponent fontAwesomeSvgs={fontAwesomeSvgs} />
       )}
     </>
   );
