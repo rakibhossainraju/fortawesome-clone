@@ -63,6 +63,7 @@ const PaginationComponent = ({ fontAwesomeSvgs }) => {
                     .map((number) => {
                       return (
                         <li
+                          key={"pagination" + number}
                           onClick={() => paginate(number)}
                           className="bg-blue-500 p-2 text-white"
                         >

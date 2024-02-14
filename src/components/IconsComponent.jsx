@@ -11,7 +11,10 @@ export const IconsComponent = ({ fontAwesomeSvgs }) => {
       } max-sm:flex-col ${((!compact && !cheatsheet) || roomy) && "gap-6"}`}
     >
       {fontAwesomeSvgs.map((fontAwesomeSvg) => (
-        <IconCardComponent fontAwesomeSvg={fontAwesomeSvg} />
+        <IconCardComponent
+          key={fontAwesomeSvg.svgProperties.path}
+          fontAwesomeSvg={fontAwesomeSvg}
+        />
       ))}
     </section>
   );
