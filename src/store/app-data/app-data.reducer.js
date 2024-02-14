@@ -1,9 +1,9 @@
-import FONT_AWESOME_DB from "../../database/index-db.json";
+// import FONT_AWESOME_DB from "../../database/index-db.json";
 import { APP_DATA_ACTION_TYPES } from "./app-data.types";
 
 const INITIAL_STATE = {
-  appData: { ...FONT_AWESOME_DB },
-  fontAwesomeSvgs: FONT_AWESOME_DB.svgs,
+  appData: {},
+  fontAwesomeSvgs: [],
   filters: {
     licenses: [],
     categories: [],
@@ -16,6 +16,12 @@ export const appDataReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case "UPDATE_DATA":
+      return {
+        ...state,
+        appData: payload,
+        fontAwesomeSvgs: payload.svgs,
+      };
     //Search
     case APP_DATA_ACTION_TYPES.SEARCH_BY_NAME:
       return {
