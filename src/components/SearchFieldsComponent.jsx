@@ -24,7 +24,7 @@ function SearchFieldsComponent() {
     dispatch(filterByLicenses());
   };
   return (
-    <section className="flex gap-4 ">
+    <section className="flex gap-2">
       <div
         className={`rounded-[5px] border-2 ${
           licensesFilter.includes("classic")
@@ -130,7 +130,7 @@ export default SearchFieldsComponent;
 const searchFieldsIcons = {
   icons: (styles) => (
     <svg
-      className={`aspect-square w-[2.3rem] transition-all duration-100 ease-[ease] ${styles}`}
+      className={`aspect-square w-[2rem] transition-all duration-100 ease-[ease] ${styles}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0,0,512,512"
     >
@@ -139,7 +139,7 @@ const searchFieldsIcons = {
   ),
   brands: (styles) => (
     <svg
-      className={`aspect-square w-[2.3rem] transition-all duration-100 ease-[ease] ${styles}`}
+      className={`aspect-square w-[2rem] transition-all duration-100 ease-[ease] ${styles}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0,0,448,512"
     >
@@ -148,7 +148,7 @@ const searchFieldsIcons = {
   ),
   free: (styles) => (
     <svg
-      className={`aspect-square w-[2.3rem] transition-all duration-100 ease-[ease] ${styles}`}
+      className={`aspect-square w-[2rem] transition-all duration-100 ease-[ease] ${styles}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0,0,448,512"
     >

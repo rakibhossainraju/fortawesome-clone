@@ -5,6 +5,12 @@ import {
   changeLayoutToRoomy,
 } from "../store/dynamic-layout/dynamic-layout.action.js";
 import { selectDynamicGrids } from "../store/dynamic-layout/dynamic-layout.selctor.js";
+import {
+  sorByAlphabet,
+  sortByFeature,
+  sortByRelease,
+} from "../store/app-data/app-data.action.js";
+import { debounce } from "../utils/debounce.utils.js";
 
 const SortFieldsComponent = () => {
   const dispatch = useDispatch();
@@ -16,34 +22,80 @@ const SortFieldsComponent = () => {
     value === "compact" && dispatch(changeLayoutToCompact());
     value === "cheatsheet" && dispatch(changeLayoutToCheatsheet());
   };
+
+  const handleSelectChange = debounce((event) => {
+    const { value } = event.target;
+    value === "featured" && dispatch(sortByFeature());
+    value === "alphabetical" && dispatch(sorByAlphabet());
+    value === "release" && dispatch(sortByRelease());
+  }, 500);
   return (
-    <section className="flex-center gap-5">
-      <button
-        value="roomy"
-        className={`group relative rounded-lg border-2 border-transparent p-3 hover:border-blue-500`}
-        onClick={handelLayoutChange}
-      >
-        {sortFieldsHoverElements.hoverToolTip("Roomy")}
-        {sortFieldsIcons.roomy(roomy ? "fill-blue-500" : "fill-blue-1000")}
-      </button>
-      <button
-        value="compact"
-        className={`group relative rounded-lg border-2 border-transparent p-3 hover:border-blue-500`}
-        onClick={handelLayoutChange}
-      >
-        {sortFieldsHoverElements.hoverToolTip("Compact")}
-        {sortFieldsIcons.compact(compact ? "fill-blue-500" : "fill-blue-1000")}
-      </button>
-      <button
-        value="cheatsheet"
-        className={`group relative rounded-lg border-2 border-transparent p-3 hover:border-blue-500`}
-        onClick={handelLayoutChange}
-      >
-        {sortFieldsHoverElements.hoverToolTip("Cheatsheet")}
-        {sortFieldsIcons.cheatsheet(
-          cheatsheet ? "fill-blue-500" : "fill-blue-1000",
-        )}
-      </button>
+    <section className="flex-center gap-3">
+      <section className="flex-center gap-2">
+        <button
+          value="roomy"
+          className={`group relative rounded-lg border-2 border-transparent p-3 hover:border-blue-500`}
+          onClick={handelLayoutChange}
+        >
+          {sortFieldsHoverElements.hoverToolTip("Roomy")}
+          {sortFieldsIcons.roomy(
+            roomy || (!compact && !cheatsheet)
+              ? "fill-blue-500"
+              : "fill-blue-1000",
+          )}
+        </button>
+        <button
+          value="compact"
+          className={`group relative rounded-lg border-2 border-transparent p-3 hover:border-blue-500`}
+          onClick={handelLayoutChange}
+        >
+          {sortFieldsHoverElements.hoverToolTip("Compact")}
+          {sortFieldsIcons.compact(
+            compact ? "fill-blue-500" : "fill-blue-1000",
+          )}
+        </button>
+        <button
+          value="cheatsheet"
+          className={`group relative rounded-lg border-2 border-transparent p-3 hover:border-blue-500`}
+          onClick={handelLayoutChange}
+        >
+          {sortFieldsHoverElements.hoverToolTip("Cheatsheet")}
+          {sortFieldsIcons.cheatsheet(
+            cheatsheet ? "fill-blue-500" : "fill-blue-1000",
+          )}
+        </button>
+      </section>
+      <section className="flex-center gap-5">
+        <div className="group relative">
+          <div className="overflow-x-hidden rounded-xl border-2 border-gray-300 pr-4">
+            <select
+              className="py-3 pl-4 outline-none"
+              onClick={handleSelectChange}
+            >
+              <option value="featured">Featured</option>
+              <option value="alphabetical">Alphabetical</option>
+              <option value="release">Release</option>
+            </select>
+            {sortFieldsHoverElements.hoverToolTip(
+              "Sort Icons",
+              "w-32 text-center",
+            )}
+          </div>
+        </div>
+        <div className="group relative">
+          <div className="group relative overflow-x-hidden rounded-xl border-2 border-gray-300 pr-4">
+            <select className="py-3 pl-4 outline-none">
+              <option value="featured">6.5.1</option>
+              <option value="alphabetical">5.15.4</option>
+              <option value="release">All Versions</option>
+            </select>
+          </div>
+          {sortFieldsHoverElements.hoverToolTip(
+            "Not Functional",
+            "w-32 text-center",
+          )}
+        </div>
+      </section>
     </section>
   );
 };
@@ -53,7 +105,7 @@ export default SortFieldsComponent;
 const sortFieldsHoverElements = {
   hoverToolTip: (label, styles) => (
     <span
-      className={`absolute -top-12 left-1/2 -translate-x-1/2 scale-0 rounded bg-blue-1000 p-2 text-sm text-white transition-all duration-200 before:absolute before:bottom-0 before:left-1/2 before:h-2 before:w-2 before:-translate-x-1/2 before:translate-y-1/2 before:rotate-45 before:bg-blue-1000 before:content-[''] group-hover:scale-100`}
+      className={`absolute -top-12 left-1/2 -translate-x-1/2 scale-0 rounded bg-blue-1000 p-2 text-sm text-white transition-all duration-200 before:absolute before:bottom-0 before:left-1/2 before:h-2 before:w-2 before:-translate-x-1/2 before:translate-y-1/2 before:rotate-45 before:bg-blue-1000 before:content-[''] group-hover:scale-100 ${styles}`}
     >
       {label}
     </span>

@@ -15,11 +15,10 @@ const HomePage = () => {
   return (
     <>
       <header>
-        <section id="search-header" className="mx-auto max-w-[50rem]">
-          <h1 className="font-ceraroundpros text-6xl ">I am home page</h1>
+        <section id="search-header" className="flex-center flex-col">
           <SearchBarComponent />
           <h4>{JSON.stringify(filters)}</h4>
-          <div className="flex">
+          <div className="flex gap-20">
             <SearchFieldsComponent />
             <SortFieldsComponent />
           </div>

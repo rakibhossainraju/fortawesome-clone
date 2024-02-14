@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectAppDataObj,
+  selectFilters,
   selectFontAwesomeCategories,
   selectFontAwesomeSponsors,
 } from "../store/app-data/app-data.selctor";
@@ -16,6 +17,13 @@ const SideBarComponent = () => {
   const categories = Object.values(useSelector(selectFontAwesomeCategories));
   const sponsors = Object.keys(useSelector(selectFontAwesomeSponsors));
   const fontAwesomeSvgs = useSelector(selectAppDataObj).svgs;
+  const {
+    licenses,
+    categories: categoriesFilters,
+    features,
+    styles,
+  } = useSelector(selectFilters);
+
   const { favorite, newVersos, solidStyles, regularStyles, duotoneStyles } =
     useSelector(selectAppDataObj).svgs.reduce(
       (acc, carSvg) => {
@@ -67,7 +75,6 @@ const SideBarComponent = () => {
     );
     dispatch(filterByStyles());
   };
-
   return (
     <section className="my-7 px-6 text-slate-500">
       {/*STYLE*/}
@@ -76,14 +83,16 @@ const SideBarComponent = () => {
         <ul className="mb-10 ml-3">
           <li
             onClick={() => handelStylesFilter("solid")}
-            className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300"
+            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${styles.includes("solid") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.938rem]">
-              <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
+            <p className="flex items-center gap-4 text-[0.8rem]">
+              <span
+                className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${styles.includes("solid") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
+              >
                 &#10003;
               </span>
               <svg
-                className="aspect-square w-3.5 fill-slate-500 group-hover:hidden"
+                className={`aspect-square w-3.5 fill-slate-500 group-hover:hidden ${styles.includes("solid") && "hidden"}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0,0,512,512"
               >
@@ -95,14 +104,16 @@ const SideBarComponent = () => {
           </li>
           <li
             onClick={() => handelStylesFilter("regular")}
-            className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300"
+            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${styles.includes("regular") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.938rem]">
-              <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
+            <p className="flex items-center gap-4 text-[0.8rem]">
+              <span
+                className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${styles.includes("regular") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
+              >
                 &#10003;
               </span>
               <svg
-                className="aspect-square w-3.5 fill-slate-500 group-hover:hidden"
+                className={`aspect-square w-3.5 fill-slate-500 group-hover:hidden ${styles.includes("regular") && "hidden"}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0,0,512,512"
               >
@@ -114,14 +125,16 @@ const SideBarComponent = () => {
           </li>
           <li
             onClick={() => handelStylesFilter("brands")}
-            className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300"
+            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${styles.includes("brands") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.938rem]">
-              <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
+            <p className="flex items-center gap-4 text-[0.8rem]">
+              <span
+                className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${styles.includes("brands") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
+              >
                 &#10003;
               </span>
               <svg
-                className="aspect-square w-3.5 fill-slate-500 group-hover:hidden"
+                className={`aspect-square w-3.5 fill-slate-500 group-hover:hidden ${styles.includes("brands") && "hidden"}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0,0,512,512"
               >
@@ -132,7 +145,7 @@ const SideBarComponent = () => {
             <p>{duotoneStyles}</p>
           </li>
           <li className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300">
-            <p className="flex items-center gap-4 text-[0.938rem]">
+            <p className="flex items-center gap-4 text-[0.8rem]">
               <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
                 &#10003;
               </span>
@@ -148,7 +161,7 @@ const SideBarComponent = () => {
             <p>00</p>
           </li>
           <li className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300">
-            <p className="flex items-center gap-4 text-[0.938rem]">
+            <p className="flex items-center gap-4 text-[0.8rem]">
               <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
                 &#10003;
               </span>
@@ -171,15 +184,17 @@ const SideBarComponent = () => {
         <h4 className="mb-2 font-ceraroundpros text-sm font-bold">FEATURED</h4>
         <ul className="mb-10 ml-3">
           <li
-            className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300"
             onClick={() => handelFeaturedFilter("new")}
+            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${features.includes("new") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.938rem]">
-              <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
+            <p className="flex items-center gap-4 text-[0.8rem]">
+              <span
+                className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${features.includes("new") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
+              >
                 &#10003;
               </span>
               <svg
-                className="aspect-square w-3.5 fill-slate-500 group-hover:hidden"
+                className={`aspect-square w-3.5 fill-slate-500 group-hover:hidden ${features.includes("new") && "hidden"}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0,0,576,512"
               >
@@ -190,15 +205,17 @@ const SideBarComponent = () => {
             <p>{newVersos}</p>
           </li>
           <li
-            className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300"
             onClick={() => handelFeaturedFilter("sponsors")}
+            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${features.includes("sponsors") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.938rem]">
-              <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
+            <p className="flex items-center gap-4 text-[0.8rem]">
+              <span
+                className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${features.includes("sponsors") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
+              >
                 &#10003;
               </span>
               <svg
-                className="aspect-square w-3.5 fill-slate-500 group-hover:hidden"
+                className={`aspect-square w-3.5 fill-slate-500 group-hover:hidden ${features.includes("sponsors") && "hidden"}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0,0,512,512"
               >
@@ -209,15 +226,17 @@ const SideBarComponent = () => {
             <p>{sponsors.length}</p>
           </li>
           <li
-            className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300"
             onClick={() => handelFeaturedFilter("favorite")}
+            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${features.includes("favorite") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.938rem]">
-              <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
+            <p className="flex items-center gap-4 text-[0.8rem]">
+              <span
+                className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${features.includes("favorite") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
+              >
                 &#10003;
               </span>
               <svg
-                className="aspect-square w-3.5 fill-slate-500 group-hover:hidden"
+                className={`aspect-square w-3.5 fill-slate-500 group-hover:hidden ${features.includes("favorite") && "hidden"}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0,0,512,512"
               >
@@ -238,16 +257,18 @@ const SideBarComponent = () => {
         <ul className="mb-10 ml-1">
           {categories.map((category, index) => (
             <li
-              key={category.label}
+              key={"category" + category.category}
               onClick={() => handelCategoriesFilter(category.category)}
-              className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300"
+              className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${categoriesFilters.includes(category.category) && "bg-blue-500 text-white"}`}
             >
-              <p className="flex items-center gap-4 text-[0.93rem]">
-                <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
+              <p className="flex items-center gap-4 text-[0.8rem]">
+                <span
+                  className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${categoriesFilters.includes(category.category) ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
+                >
                   &#10003;
                 </span>
                 <svg
-                  className="aspect-square w-3.5 fill-slate-500 group-hover:hidden"
+                  className={`aspect-square w-3.5 fill-slate-500 group-hover:hidden ${categoriesFilters.includes(category.category) && "hidden"}`}
                   viewBox={fontAwesomeSvgs[500 + index].svgProperties.viewBox}
                 >
                   <path d={fontAwesomeSvgs[500 + index].svgProperties.path} />
