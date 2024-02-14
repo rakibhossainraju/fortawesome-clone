@@ -1,9 +1,10 @@
 import IconCardComponent from "./IconCardComponent.jsx";
+import { useSelector } from "react-redux";
+import { selectDynamicGrids } from "../store/dynamic-layout/dynamic-layout.selctor.js";
 
-export const IconsComponent = ({ fontAwesomeSvgs }) => {
-  const compact = false;
-  const cheatsheet = false;
-  const roomy = false;
+export const IconsComponent = ({ fontAwesomeSvgs = [] }) => {
+  const { roomy, compact, cheatsheet } = useSelector(selectDynamicGrids);
+
   return (
     <section
       className={`flex-center max-w-[80rem] flex-wrap ${compact && "gap-3.5"} ${

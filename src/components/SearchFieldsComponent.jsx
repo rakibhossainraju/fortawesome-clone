@@ -43,7 +43,7 @@ function SearchFieldsComponent() {
               : "fill-blue-1000 group-hover:fill-blue-500 ",
           )}
           <span
-            className={`font-ceraroundpros text-sm text-slate-800 group-hover:text-blue-500 ${licensesFilter.includes("classic") && "text-blue-500"}`}
+            className={`font-ceraroundpros text-sm  group-hover:text-blue-500 ${licensesFilter.includes("classic") ? "text-blue-500" : "text-slate-800"}`}
           >
             Classic
           </span>
@@ -66,7 +66,9 @@ function SearchFieldsComponent() {
               ? "fill-blue-500 group-hover:fill-blue-400"
               : "fill-blue-1000 group-hover:fill-blue-500 ",
           )}
-          <span className="font-ceraroundpros text-sm text-slate-800 group-hover:text-blue-500">
+          <span
+            className={`font-ceraroundpros text-sm  group-hover:text-blue-500 ${licensesFilter.includes("pro") ? "text-blue-500" : "text-slate-800"}`}
+          >
             Sharp
           </span>
         </button>
@@ -88,7 +90,9 @@ function SearchFieldsComponent() {
               ? "fill-blue-500 group-hover:fill-blue-400"
               : "fill-blue-1000 group-hover:fill-blue-500 ",
           )}
-          <span className="font-ceraroundpros text-sm text-slate-800 group-hover:text-blue-500">
+          <span
+            className={`font-ceraroundpros text-sm  group-hover:text-blue-500 ${licensesFilter.includes("brand") ? "text-blue-500" : "text-slate-800"}`}
+          >
             Brands
           </span>
         </button>
@@ -110,7 +114,9 @@ function SearchFieldsComponent() {
               ? "fill-blue-500 group-hover:fill-blue-400"
               : "fill-blue-1000 group-hover:fill-blue-500 ",
           )}
-          <span className="font-ceraroundpros text-sm text-slate-800 group-hover:text-blue-500">
+          <span
+            className={`font-ceraroundpros text-sm  group-hover:text-blue-500 ${licensesFilter.includes("free") ? "text-blue-500" : "text-slate-800"}`}
+          >
             Free
           </span>
         </button>
