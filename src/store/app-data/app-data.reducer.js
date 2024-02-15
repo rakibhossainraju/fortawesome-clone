@@ -92,9 +92,8 @@ export const appDataReducer = (state = INITIAL_STATE, action) => {
           styles: [],
         },
       };
-    // FIlters
+    // Filters
     case APP_DATA_ACTION_TYPES.FILTER_BY_LICENSES:
-      console.log(payload);
       return {
         ...state,
         fontAwesomeSvgs: [

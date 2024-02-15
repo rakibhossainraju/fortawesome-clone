@@ -7,11 +7,11 @@ function NavBarComponent() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
-              shape-rendering="geometricPrecision"
-              text-rendering="geometricPrecision"
+              shapeRendering="geometricPrecision"
+              textRendering="geometricPrecision"
               className="logo-flag-animated h-7 fill-blue-400"
             >
-              <g clip-path="url(#logo-flag-animated-mask-clip-path)">
+              <g clipPath="url(#logo-flag-animated-mask-clip-path)">
                 <g
                   transform="translate(11.3,7)"
                   className="logo-flag-animated-flag-wave-to"
@@ -32,8 +32,8 @@ function NavBarComponent() {
                 <path
                   d="M0,16h16v-16L0,0v16ZM2,1q.075195.556641,0,7h3v7h10v-14L2,1Z"
                   fill="white"
-                  clip-rule="evenodd"
-                  fill-rule="evenodd"
+                  clipRule="evenodd"
+                  fillRule="evenodd"
                 ></path>
                 <clipPath id="logo-flag-animated-mask-clip-path">
                   <rect width="16" height="16" rx="0" ry="0"></rect>
@@ -95,13 +95,3 @@ function NavBarComponent() {
 }
 
 export default NavBarComponent;
-
-const navMenus = [
-  "Your Kits",
-  "Search Icons",
-  "Icons",
-  "Docs",
-  " Plans",
-  "Support",
-  "Podcast",
-];

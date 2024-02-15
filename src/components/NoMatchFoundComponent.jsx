@@ -6,7 +6,7 @@ export const NoMatchFoundComponent = () => {
     dispatch(resetFilters());
   };
   return (
-    <div className="w-ful mt-10">
+    <div className="w-ful my-10">
       <section>
         <div className="flex-center mx-auto mb-10 max-w-3xl flex-col gap-8 rounded-xl bg-white p-10 max-md:max-w-lg ">
           <svg

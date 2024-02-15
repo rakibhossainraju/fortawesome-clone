@@ -67,7 +67,6 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
             <span className="font-normal ">{fontAwesomeSvgs.length} </span>
             <span className="font-ceraroundpros font-bold">Icons</span>
           </h3>
-          {/*<div className="flex-center gap-5">*/}
           {licenses.map((name) => (
             <button
               key={"licenses" + name}
@@ -137,14 +136,13 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
               </p>
             </button>
           )}
-          {/*</div>*/}
         </div>
         <div>
           <h4
             className={`text-lg text-slate-500 ${fontAwesomeSvgs.length <= cardsPerPage && "invisible"}`}
           >
             <span className="font-ceraroundpros ">Page </span> {currentPage}
-            <span className="font-ceraroundpros ">out of</span>{" "}
+            <span className="font-ceraroundpros ">out of</span>
             {pageNumbers[pageNumbers.length - 1]}
           </h4>
         </div>
@@ -154,36 +152,60 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
         <>
           <IconsComponent fontAwesomeSvgs={currentCards} />
           {/*Pagination Buttons*/}
-          <nav>
-            <ul className="mb-10">
-              <div>
+          <nav className="my-10">
+            <ul>
+              <div className="flex-center">
+                {currentPage > 1 && (
+                  <button
+                    className="mr-2 rounded-[6px] fill-blue-800 px-8 py-4 hover:bg-gray-300"
+                    onClick={prevPage}
+                  >
+                    <div className="flex-center">
+                      <svg
+                        className="aspect-square w-[1.5rem] fill-blue-800"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0,0,320,512"
+                      >
+                        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"></path>
+                      </svg>
+                      <span className="font-medium text-blue-800">Prev</span>
+                    </div>
+                  </button>
+                )}
+                {pageNumbers
+                  .slice(-1 + currentPage, 3 + currentPage)
+                  .map((number) => {
+                    return (
+                      <button
+                        key={"pagination" + number}
+                        onClick={() => paginate(number)}
+                        className={`mr-2 rounded-[6px] px-6 py-4 font-medium ${
+                          currentPage === number
+                            ? "bg-blue-700 text-white "
+                            : "text-blue-800 hover:bg-gray-300"
+                        }`}
+                      >
+                        {number}
+                      </button>
+                    );
+                  })}
+                <span className="mx-3 text-gray-600">
+                  ... {pageNumbers[pageNumbers.length - 1]}
+                </span>
                 <button
-                  className="rounded-xl bg-violet-700 p-4 text-white"
-                  onClick={prevPage}
-                >
-                  Prev Page
-                </button>
-                <div className="gap4 flex">
-                  {pageNumbers
-                    .slice(-1 + currentPage, 3 + currentPage)
-                    .map((number) => {
-                      return (
-                        <li
-                          key={"pagination" + number}
-                          onClick={() => paginate(number)}
-                          className="bg-blue-500 p-2 text-white"
-                        >
-                          {currentPage === number && "I am the active page"}
-                          {number}
-                        </li>
-                      );
-                    })}
-                </div>
-                <button
-                  className="rounded-xl bg-violet-700 p-4 text-white"
+                  className="mr-2 rounded-[6px] fill-blue-800 px-8 py-4 hover:bg-gray-300"
                   onClick={nextPage}
                 >
-                  Next Page
+                  <div className="flex-center ">
+                    <span className="font-medium text-blue-800">Next</span>
+                    <svg
+                      className="aspect-square w-[2rem] fill-blue-800"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0,0,320,512"
+                    >
+                      <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path>
+                    </svg>
+                  </div>
                 </button>
               </div>
             </ul>
