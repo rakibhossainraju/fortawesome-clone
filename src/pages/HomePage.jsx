@@ -23,13 +23,13 @@ const HomePage = () => {
       </header>
       <main className="bg-slate-100">
         <div className="mx-auto flex w-[90%] justify-center">
-          <section className="w-[28%]">
+          <section className="w-[25%]">
             {fontAwesomeSvgs.length > 0 && <SideBarComponent />}
           </section>
           {fontAwesomeSvgs.length === 0 ? (
             <NoMatchFoundComponent />
           ) : (
-            <section className="bg-rose-8300 max-w-[72%]">
+            <section className="bg-rose-8300 max-w-[75%]">
               <PaginationComponent fontAwesomeSvgs={fontAwesomeSvgs} />
             </section>
           )}

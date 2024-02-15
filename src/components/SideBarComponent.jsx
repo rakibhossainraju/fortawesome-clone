@@ -4,6 +4,7 @@ import {
   selectFilters,
   selectFontAwesomeCategories,
   selectFontAwesomeSponsors,
+  selectFontAwesomeSvgs,
 } from "../store/app-data/app-data.selctor";
 import {
   addToFilter,
@@ -17,8 +18,8 @@ const SideBarComponent = () => {
   const categories = Object.values(useSelector(selectFontAwesomeCategories));
   const sponsors = Object.keys(useSelector(selectFontAwesomeSponsors));
   const fontAwesomeSvgs = useSelector(selectAppDataObj).svgs;
+
   const {
-    licenses,
     categories: categoriesFilters,
     features,
     styles,
@@ -76,16 +77,16 @@ const SideBarComponent = () => {
     dispatch(filterByStyles());
   };
   return (
-    <section className="my-7 max-w-lg px-6 text-slate-500">
+    <section className="my-7 max-w-sm px-6 text-slate-500">
       {/*STYLE*/}
       <div>
         <h4 className="mb-2 font-ceraroundpros text-sm font-bold">STYLE</h4>
         <ul className="mb-10 ml-3">
           <li
             onClick={() => handelStylesFilter("solid")}
-            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${styles.includes("solid") && "bg-blue-500 text-white"}`}
+            className={`group mb-1 flex cursor-pointer  justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300 ${styles.includes("solid") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.8rem]">
+            <p className="flex items-center gap-4">
               <span
                 className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${styles.includes("solid") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
               >
@@ -104,9 +105,9 @@ const SideBarComponent = () => {
           </li>
           <li
             onClick={() => handelStylesFilter("regular")}
-            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${styles.includes("regular") && "bg-blue-500 text-white"}`}
+            className={`group mb-1 flex cursor-pointer  justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300 ${styles.includes("regular") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.8rem]">
+            <p className="flex items-center gap-4">
               <span
                 className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${styles.includes("regular") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
               >
@@ -125,9 +126,9 @@ const SideBarComponent = () => {
           </li>
           <li
             onClick={() => handelStylesFilter("brands")}
-            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${styles.includes("brands") && "bg-blue-500 text-white"}`}
+            className={`group mb-1 flex cursor-pointer  justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300 ${styles.includes("brands") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.8rem]">
+            <p className="flex items-center gap-4">
               <span
                 className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${styles.includes("brands") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
               >
@@ -144,8 +145,8 @@ const SideBarComponent = () => {
             </p>
             <p>{duotoneStyles}</p>
           </li>
-          <li className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300">
-            <p className="flex items-center gap-4 text-[0.8rem]">
+          <li className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300">
+            <p className="flex items-center gap-4">
               <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
                 &#10003;
               </span>
@@ -160,8 +161,8 @@ const SideBarComponent = () => {
             </p>
             <p>00</p>
           </li>
-          <li className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300">
-            <p className="flex items-center gap-4 text-[0.8rem]">
+          <li className="group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300">
+            <p className="flex items-center gap-4">
               <span className="hidden aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex">
                 &#10003;
               </span>
@@ -185,9 +186,9 @@ const SideBarComponent = () => {
         <ul className="mb-10 ml-3">
           <li
             onClick={() => handelFeaturedFilter("new")}
-            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${features.includes("new") && "bg-blue-500 text-white"}`}
+            className={`group mb-1 flex cursor-pointer  justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300 ${features.includes("new") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.8rem]">
+            <p className="flex items-center gap-4">
               <span
                 className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${features.includes("new") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
               >
@@ -206,9 +207,9 @@ const SideBarComponent = () => {
           </li>
           <li
             onClick={() => handelFeaturedFilter("sponsors")}
-            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${features.includes("sponsors") && "bg-blue-500 text-white"}`}
+            className={`group mb-1 flex cursor-pointer  justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300 ${features.includes("sponsors") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.8rem]">
+            <p className="flex items-center gap-4">
               <span
                 className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${features.includes("sponsors") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
               >
@@ -227,9 +228,9 @@ const SideBarComponent = () => {
           </li>
           <li
             onClick={() => handelFeaturedFilter("favorite")}
-            className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${features.includes("favorite") && "bg-blue-500 text-white"}`}
+            className={`group mb-1 flex cursor-pointer  justify-between rounded-lg border border-transparent px-2 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300 ${features.includes("favorite") && "bg-blue-500 text-white"}`}
           >
-            <p className="flex items-center gap-4 text-[0.8rem]">
+            <p className="flex items-center gap-4">
               <span
                 className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${features.includes("favorite") ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
               >
@@ -259,9 +260,9 @@ const SideBarComponent = () => {
             <li
               key={"category" + category.category}
               onClick={() => handelCategoriesFilter(category.category)}
-              className={`group mb-1 flex  cursor-pointer justify-between rounded-lg border border-transparent px-3 py-2 transition-all duration-100 hover:border-slate-300 ${categoriesFilters.includes(category.category) && "bg-blue-500 text-white"}`}
+              className={`group mb-1 flex cursor-pointer justify-between rounded-lg border border-transparent px-3 py-1.5 text-[12px] transition-all duration-100 hover:border-slate-300 ${categoriesFilters.includes(category.category) && "bg-blue-500 text-white"}`}
             >
-              <p className="flex items-center gap-4 text-[0.8rem]">
+              <p className="flex items-center gap-4">
                 <span
                   className={`aspect-square w-3.5 items-center justify-center rounded-sm border-2 border-slate-400 text-[7px] group-hover:flex  ${categoriesFilters.includes(category.category) ? "flex border-white bg-white text-blue-600" : "hidden text-slate-100"}`}
                 >

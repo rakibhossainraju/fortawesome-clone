@@ -10,3 +10,6 @@
   @apply flex items-center justify-center;
   /*color: rgb( 96 165 250 );*/
 }
+.outlines-style {
+  /*box-shadow: 0_0_5px_1px_#60a5faff;*/
+}

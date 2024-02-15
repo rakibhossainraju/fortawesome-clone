@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IconsComponent } from "./IconsComponent.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilters } from "../store/app-data/app-data.selctor.js";
@@ -17,6 +17,10 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
 
   const { licenses, categories, features, styles } = useSelector(selectFilters);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (fontAwesomeSvgs.length > cardsPerPage) setCurrentPage(1);
+  }, [fontAwesomeSvgs.length]);
 
   //Get current posts
   const indexOfLastCard = currentPage * cardsPerPage;
@@ -71,9 +75,9 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
             <button
               key={"licenses" + name}
               onClick={() => licenseFilteringHandler(name)}
-              className="group cursor-pointer rounded-full bg-white px-4 py-2"
+              className="group cursor-pointer rounded-full bg-white px-3 py-1.5"
             >
-              <p className="font-ceraroundpros text-sm font-bold uppercase text-slate-800 group-hover:text-blue-500">
+              <p className="font-ceraroundpros text-[10px] font-bold uppercase text-slate-800 group-hover:text-blue-500">
                 {name}
                 <span className="ml-3 text-[11px] font-bold group-hover:text-red-600">
                   x
@@ -85,9 +89,9 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
             <button
               key={"categories" + name}
               onClick={() => categoriesFilteringHandler(name)}
-              className="group cursor-pointer rounded-full bg-white px-4 py-2"
+              className="group cursor-pointer rounded-full bg-white px-3 py-1.5"
             >
-              <p className="font-ceraroundpros text-sm font-bold uppercase text-slate-800 group-hover:text-blue-500">
+              <p className="font-ceraroundpros text-[10px] font-bold uppercase text-slate-800 group-hover:text-blue-500">
                 {name}
                 <span className="ml-3 text-[11px] font-bold group-hover:text-red-600">
                   x
@@ -99,9 +103,9 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
             <button
               key={"categories" + name}
               onClick={() => featuresFilteringHandler(name)}
-              className="group cursor-pointer rounded-full bg-white px-4 py-2"
+              className="group cursor-pointer rounded-full bg-white px-3 py-1.5"
             >
-              <p className="font-ceraroundpros text-sm font-bold uppercase text-slate-800 group-hover:text-blue-500">
+              <p className="font-ceraroundpros text-[10px] font-bold uppercase text-slate-800 group-hover:text-blue-500">
                 {name}
                 <span className="ml-3 text-[11px] font-bold group-hover:text-red-600">
                   x
@@ -113,9 +117,9 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
             <button
               key={"categories" + name}
               onClick={() => stylesFilteringHandler(name)}
-              className="group cursor-pointer rounded-full bg-white px-4 py-2"
+              className="group cursor-pointer rounded-full bg-white px-3 py-1.5"
             >
-              <p className="font-ceraroundpros text-sm font-bold uppercase text-slate-800 group-hover:text-blue-500">
+              <p className="font-ceraroundpros text-[10px] font-bold uppercase text-slate-800 group-hover:text-blue-500">
                 {name}
                 <span className="ml-3 text-[11px] font-bold group-hover:text-red-600">
                   x
@@ -129,9 +133,9 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
             styles.length > 0) && (
             <button
               onClick={handelReset}
-              className="group cursor-pointer rounded-full border border-slate-400 bg-transparent px-4 py-2 hover:border-blue-500"
+              className="group cursor-pointer rounded-full border border-slate-400 bg-transparent px-3 py-1.5 hover:border-blue-500"
             >
-              <p className="font-ceraroundpros text-sm font-bold uppercase text-slate-800 group-hover:text-blue-500">
+              <p className="font-ceraroundpros text-[10px] font-bold uppercase text-slate-800 group-hover:text-blue-500">
                 Reset
               </p>
             </button>
@@ -189,24 +193,28 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
                       </button>
                     );
                   })}
-                <span className="mx-3 text-gray-600">
-                  ... {pageNumbers[pageNumbers.length - 1]}
-                </span>
-                <button
-                  className="mr-2 rounded-[6px] fill-blue-800 px-8 py-4 hover:bg-gray-300"
-                  onClick={nextPage}
-                >
-                  <div className="flex-center ">
-                    <span className="font-medium text-blue-800">Next</span>
-                    <svg
-                      className="aspect-square w-[2rem] fill-blue-800"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0,0,320,512"
+                {currentPage < 20 && (
+                  <>
+                    <span className="mx-3 text-gray-600">
+                      ... {pageNumbers[pageNumbers.length - 1]}
+                    </span>
+                    <button
+                      className="mr-2 rounded-[6px] fill-blue-800 px-8 py-4 hover:bg-gray-300"
+                      onClick={nextPage}
                     >
-                      <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path>
-                    </svg>
-                  </div>
-                </button>
+                      <div className="flex-center ">
+                        <span className="font-medium text-blue-800">Next</span>
+                        <svg
+                          className="aspect-square w-[2rem] fill-blue-800"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0,0,320,512"
+                        >
+                          <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path>
+                        </svg>
+                      </div>
+                    </button>
+                  </>
+                )}
               </div>
             </ul>
           </nav>
