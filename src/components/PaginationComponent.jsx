@@ -182,7 +182,7 @@ const PaginationComponent = ({ fontAwesomeSvgs = [] }) => {
                         className={`mr-2 rounded-[6px] px-6 py-4 font-medium ${
                           currentPage === number
                             ? "bg-blue-700 text-white "
-                            : "text-blue-800 hover:bg-gray-300"
+                            : "text-blue-800 hover:bg-gray-300 "
                         }`}
                       >
                         {number}
