@@ -76,7 +76,7 @@ const SideBarComponent = () => {
     dispatch(filterByStyles());
   };
   return (
-    <section className="my-7 px-6 text-slate-500">
+    <section className="my-7 max-w-lg px-6 text-slate-500">
       {/*STYLE*/}
       <div>
         <h4 className="mb-2 font-ceraroundpros text-sm font-bold">STYLE</h4>

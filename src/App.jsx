@@ -26,7 +26,7 @@ const App = () => {
     <>
       {isLoading ? (
         <div className="flex-center h-[90vh] w-[100vw]">
-          <LoadingSpinner />
+          <LoadingSpinner styles={"w-32"} />
         </div>
       ) : (
         dataIsLoaded && (

@@ -1,7 +1,7 @@
 import SearchBarComponent from "../components/SearchBarComponent";
 import SearchFieldsComponent from "../components/SearchFieldsComponent";
 import SortFieldsComponent from "../components/SortFieldsComponent";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectFontAwesomeSvgs } from "../store/app-data/app-data.selctor";
 import SideBarComponent from "../components/SideBarComponent";
 import PaginationComponent from "../components/PaginationComponent";
@@ -9,16 +9,13 @@ import { NoMatchFoundComponent } from "../components/NoMatchFoundComponent.jsx";
 
 const HomePage = () => {
   const fontAwesomeSvgs = useSelector(selectFontAwesomeSvgs);
-  const filters = useSelector(({ appData }) => appData.filters);
-  const dispatch = useDispatch();
 
   return (
     <>
       <header>
-        <section id="search-header" className="flex-center flex-col">
+        <section id="search-header" className="flex-center flex-col gap-10">
           <SearchBarComponent />
-          <h4>{JSON.stringify(filters)}</h4>
-          <div className="flex gap-20">
+          <div className="mb-4 flex gap-24">
             <SearchFieldsComponent />
             <SortFieldsComponent />
           </div>

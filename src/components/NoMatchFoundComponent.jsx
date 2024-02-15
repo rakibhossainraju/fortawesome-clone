@@ -6,7 +6,7 @@ export const NoMatchFoundComponent = () => {
     dispatch(resetFilters());
   };
   return (
-    <div className="w-full">
+    <div className="w-ful mt-10">
       <section>
         <div className="flex-center mx-auto mb-10 max-w-3xl flex-col gap-8 rounded-xl bg-white p-10 max-md:max-w-lg ">
           <svg
@@ -35,21 +35,21 @@ export const NoMatchFoundComponent = () => {
           <h3 className="text-center font-ceraroundpros text-5xl font-bold text-blue-950">
             No Icons Found
           </h3>
-          <p className="text-blue-1000 mx-auto max-w-2xl text-center font-ceraroundpros text-xl font-medium">
+          <p className="mx-auto max-w-2xl text-center font-ceraroundpros text-xl font-medium text-blue-1000">
             There are no icons that match your current filters. Try removing
             some of them to get better results.
           </p>
           <button
             onClick={handelClear}
-            className="flex-center border-blue-1000 rounded-lg border-2 px-5 py-4 shadow-[0_6px_#183153FF] outline-rose-800 active:bg-slate-300"
+            className="flex-center rounded-lg border-2 border-blue-1000 px-5 py-4 shadow-[0_6px_#183153FF] outline-rose-800 active:bg-slate-300"
           >
-            <span className="text-blue-1000 text-lg font-medium">
+            <span className="text-lg font-medium text-blue-1000">
               Clear All Filters + Start Over
             </span>
           </button>
         </div>
       </section>
-      <section className="flex flex-wrap justify-center gap-1">
+      <section className="flex flex-wrap justify-center gap-4">
         {/*CARD 1*/}
         <div className="h-70 w-64 overflow-y-hidden rounded-2xl border-2 border-b-8 bg-white text-center shadow-lg hover:border-blue-400 ">
           <div className="flex-center bg-blue-400 py-8">
@@ -76,7 +76,7 @@ export const NoMatchFoundComponent = () => {
               </g>
             </svg>
           </div>
-          <div className="text-blue-1000 px-3 py-5 font-ceraroundpros">
+          <div className="px-3 py-5 font-ceraroundpros text-blue-1000">
             <h1 className="mb-4 text-xl font-bold">Request an Icon</h1>
             <p className="text-lg">
               Suggest an icon idea to our community and vote it up the ranks of
@@ -88,14 +88,14 @@ export const NoMatchFoundComponent = () => {
         <div className="h-70 w-64 overflow-y-hidden rounded-2xl border-2 border-b-8 bg-white text-center shadow-lg hover:border-green-400 ">
           <div className="flex-cente bg-green-400 py-10">
             <svg
-              className="fill-blue-1000 mx-auto max-w-24"
+              className="mx-auto max-w-24 fill-blue-1000"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0,0,640,512"
             >
               <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"></path>
             </svg>
           </div>
-          <div className="text-blue-1000 px-3 py-5 font-ceraroundpros">
+          <div className="px-3 py-5 font-ceraroundpros text-blue-1000">
             <h1 className="mb-4 text-xl font-bold">Upload an Icon</h1>
             <p className="text-lg">
               Upload your own icon to a Kit and easily use it just like it an
@@ -107,14 +107,14 @@ export const NoMatchFoundComponent = () => {
         <div className="h-70 w-64 overflow-y-hidden rounded-2xl border-2 border-b-8 bg-white text-center shadow-lg hover:border-yellow-400 ">
           <div className="flex-cente r bg-yellow-400 py-8">
             <svg
-              className="fill-blue-1000 mx-auto max-w-24"
+              className="mx-auto max-w-24 fill-blue-1000"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
               <path d="M2.047 14.668a.994.994 0 0 0 .465.607l1.91 1.104v2.199a1 1 0 0 0 1 1h2.199l1.104 1.91a1.01 1.01 0 0 0 .866.5c.174 0 .347-.046.501-.135L12 20.75l1.91 1.104a1.001 1.001 0 0 0 1.366-.365l1.103-1.91h2.199a1 1 0 0 0 1-1V16.38l1.91-1.104a1 1 0 0 0 .365-1.367L20.75 12l1.104-1.908a1 1 0 0 0-.365-1.366l-1.91-1.104v-2.2a1 1 0 0 0-1-1H16.38l-1.103-1.909a1.008 1.008 0 0 0-.607-.466a.993.993 0 0 0-.759.1L12 3.25l-1.909-1.104a1 1 0 0 0-1.366.365l-1.104 1.91H5.422a1 1 0 0 0-1 1V7.62l-1.91 1.104a1.003 1.003 0 0 0-.365 1.368L3.251 12l-1.104 1.908a1.009 1.009 0 0 0-.1.76M12 13c-3.48 0-4-1.879-4-3c0-1.287 1.029-2.583 3-2.915V6.012h2v1.109c1.734.41 2.4 1.853 2.4 2.879h-1l-1 .018C13.386 9.638 13.185 9 12 9c-1.299 0-2 .515-2 1c0 .374 0 1 2 1c3.48 0 4 1.879 4 3c0 1.287-1.029 2.583-3 2.915V18h-2v-1.08c-2.339-.367-3-2.003-3-2.92h2c.011.143.159 1 2 1c1.38 0 2-.585 2-1c0-.325 0-1-2-1" />
             </svg>
           </div>
-          <div className="text-blue-1000 px-3 py-5 font-ceraroundpros">
+          <div className="px-3 py-5 font-ceraroundpros text-blue-1000">
             <h1 className="mb-4 text-xl font-bold">Icon Commissions</h1>
             <p className="text-lg">
               Absolutely need an icon? Sponsor it and we'll design it for you
